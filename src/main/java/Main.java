@@ -41,10 +41,15 @@ public class Main {
 
     void newGame() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Guess letter");
+        System.out.println("The word is:");
         Controller controller = new Controller();
         HangmanTree hangmanTree = new HangmanTree();
         String words = Words.randomWord();
+        for (int i=1;i<=words.length();i++)
+            System.out.print("_ ");
+        System.out.println("\nGuess letter");
+        System.out.println(words);
+
 
 
 
