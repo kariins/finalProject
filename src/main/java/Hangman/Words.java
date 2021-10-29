@@ -4,19 +4,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Words {
-    //    public String[] words = {
-//            "cat", "dog", "class"
-//};
-//
-//    public void chooseWord() {
-//        // choose a random word
-//        Random random = new Random();
-//        int range = random.nextInt(words.length());
-//        String word = words.get(range);
-//        return word;
-//    }
+
     private static ArrayList<String> dictionary = new ArrayList<String>();
     private static Random random = new Random();
+
+    public static ArrayList<String> getDictionary() {
+        return dictionary;
+    }
 
     private static void generateWords() {
         String[] words = {"ANSWER", "AUDIENCE",
@@ -29,7 +23,9 @@ public class Words {
 
     public static String randomWord() {
         generateWords();
-        return (String) dictionary.get(random.nextInt(dictionary.size()));
+        String hiddenWord= dictionary.get((0));
+        return hiddenWord;
+        //return (String) dictionary.get(random.nextInt(dictionary.size()));
 
     }
 }
