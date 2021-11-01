@@ -1,72 +1,93 @@
 package Hangman;
 
 public class HangmanTree {
-    int maxErrors=5;
-    public static String switchMethod(int maxErrors) {
-        switch (maxErrors) {
+
+    public String draw(int currentError) {
+
+        switch (currentError) {
             case 1:
-                return drawFirst();
+                drawFirst();
+                break;
             case 2:
-                return drawSecond();
+                drawSecond();
+                break;
             case 3:
-                return drawHead();
+                drawHead();
+                break;
             case 4:
-                return drawBody();
+                drawBody();
+                break;
             case 5:
-                return drawHangman();
-
+                drawHangman();
+                break;
             default:
-                return "GAME OVER";
+                System.out.println("");
+                break;
+
         }
+
+        return null;
     }
 
 
-
-    private static String drawHangman() {
-        return  "\n _________     "+
-                "\n|         |    "+
-                "\n|         0    "+
-                "\n|        /|\\  "+
-                "\n|        / \\  "+
-                "\n|              "+
-                "\n|______________";
-    }
-    private static String drawBody() {
-        return  "\n _________     "+
-                "\n|         |    "+
-                "\n|         0    "+
-                "\n|        /|\\  "+
-                "\n|              "+
-                "\n|              "+
-                "\n|______________";
+    private static void drawHangman() {
+        String man =
+                " \n _________     " +
+                        "\n|         |    " +
+                        "\n|         0    " +
+                        "\n|        /|\\  " +
+                        "\n|        / \\  " +
+                        "\n|              " +
+                        "\n|______________";
+        System.out.println(man);
     }
 
-    private static String drawHead() {
-        return  "\n _________     "+
-                "\n|         |    "+
-                "\n|         0    "+
-                "\n|              "+
-                "\n|              "+
-                "\n|              "+
-                "\n|______________";
+    private static void drawBody() {
+        String man =
+                " \n _________     " +
+                        "\n|         |    " +
+                        "\n|         0    " +
+                        "\n|        /|\\  " +
+                        "\n|              " +
+                        "\n|              " +
+                        "\n|______________";
+        System.out.println(man);
     }
-    private static String drawSecond() {
-        return  "\n _________     "+
-                "\n|              "+
-                "\n|              "+
-                "\n|              "+
-                "\n|              "+
-                "\n|              "+
-                "\n|______________";
+
+    private static void drawHead() {
+        String man =
+                " \n _________     " +
+                        "\n|         |    " +
+                        "\n|         0    " +
+                        "\n|              " +
+                        "\n|              " +
+                        "\n|              " +
+                        "\n|______________";
+        System.out.println(man);
     }
-    private static String drawFirst() {
-        return  "\n|              "+
-                "\n|              "+
-                "\n|              "+
-                "\n|              "+
-                "\n|              "+
-                "\n|              "+
-                "\n|______________";
+
+    private static void drawSecond() {
+        String man =
+                " \n _________     " +
+                        "\n|              " +
+                        "\n|              " +
+                        "\n|              " +
+                        "\n|              " +
+                        "\n|              " +
+                        "\n|______________";
+        System.out.println(man);
     }
+
+    private static void drawFirst() {
+        String man = "\n|              " +
+                "\n|              " +
+                "\n|              " +
+                "\n|              " +
+                "\n|              " +
+                "\n|              " +
+                "\n|______________";
+        System.out.println(man);
+    }
+
 
 }
