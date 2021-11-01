@@ -13,9 +13,9 @@ public class Words {
     }
 
     private static void generateWords() {
-        String[] words = new String[] {"APPLE","ORANGE",
-                "PINEAPPLE", "MELON",
-                "MANGO", "BANANA", "PEAR"};
+        String[] words = new String[] {"APRICOTS", "ORANGE",
+                "MELON", "GRAPES", "LEMON",
+                "MANGO", "PEAR"};
 
         for (int i = 0; i < words.length; i++)
             dictionary.add(words[i]);

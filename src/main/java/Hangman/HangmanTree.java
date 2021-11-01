@@ -80,12 +80,12 @@ public class HangmanTree {
 
     private static void drawFirst() {
         String man = "\n|              " +
-                "\n|              " +
-                "\n|              " +
-                "\n|              " +
-                "\n|              " +
-                "\n|              " +
-                "\n|______________";
+                     "\n|              " +
+                     "\n|              " +
+                     "\n|              " +
+                     "\n|              " +
+                     "\n|              " +
+                     "\n|______________";
         System.out.println(man);
     }
 
