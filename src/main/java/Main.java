@@ -14,7 +14,7 @@ public class Main {
     private boolean gameStarted = false;
 
 
-    Words words = new Words();
+    Words words =new Words();
     HangmanTree hangmanTree = new HangmanTree();
 
     public static void main(String[] args) {
@@ -36,10 +36,14 @@ public class Main {
             userInput = scanner.nextLine();
 
             switch (userInput) {
-                case "quit", "Quit", "QUIT":
+                case "quit":
+                case "Quit":
+                case "QUIT":
                     System.out.println("Exiting Application");
                     break;
-                case "play", "Play", "PLAY":
+                case "play":
+                case "PLAY":
+                case "Play":
                     System.out.println("New game");
                     playGame();
                     break;
