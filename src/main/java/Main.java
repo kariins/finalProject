@@ -1,12 +1,13 @@
 import Hangman.HangmanTree;
 import Hangman.Words;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 
 public class Main {
 
-    private int mistakes = 0;
+    int mistakes = 0;
     private String currentWord;
     private String userWord = "";
     private String userInput = "";
@@ -15,6 +16,7 @@ public class Main {
 
 
     Words words = new Words();
+
     HangmanTree hangmanTree = new HangmanTree();
 
     public static void main(String[] args) {
@@ -28,18 +30,23 @@ public class Main {
         do {
             if (!gameStarted) {
                 System.out.println("\nWelcome to Hangman, are you ready to play?");
-                System.out.println("\nEnter Play to start game");
-                System.out.println("\nEnter Quit to end program...");
+                System.out.println("\n Play to start game");
+                System.out.println("\n Quit to end program...");
 
                 System.out.println("Choose an option");
             }
+
             userInput = scanner.nextLine();
 
             switch (userInput) {
-                case "quit", "Quit", "QUIT":
+                case "quit":
+                case "Quit":
+                case "QUIT":
                     System.out.println("Exiting Application");
                     break;
-                case "play", "Play", "PLAY":
+                case "play":
+                case "Play":
+                case "PLAY":
                     System.out.println("New game");
                     playGame();
                     break;
@@ -56,9 +63,11 @@ public class Main {
         gameStarted = true;
         currentWord = words.randomWord();
         userWord = "";
+        mistakes = 0;
 
-        System.out.println("+++++++The word is:++++++++" + currentWord);
         System.out.println("You can guess the whole word or guess by letter");
+        System.out.println("+++++++The word is:++++++++" + currentWord);
+
 
         for (int i = 0; i <= currentWord.length() - 1; i++) {
             userWord = userWord.concat("_");
@@ -69,15 +78,16 @@ public class Main {
 
     private void newStep() {
         boolean foundLetter = false;
+        String userEntered = userInput.toUpperCase(Locale.ROOT);
 
-        if (userInput.length() == 1) {
+        if (userEntered.length() == 1) {
             System.out.println("This is a letter");
             char[] currentWordArray = currentWord.toCharArray();
             char[] userWordArray = userWord.toCharArray();
 
             for (int i = 0; i < currentWordArray.length; i++) {
-                if (currentWordArray[i] == userInput.charAt(0)) {
-                    userWordArray[i] = userInput.charAt(0);
+                if (currentWordArray[i] == userEntered.charAt(0)) {
+                    userWordArray[i] = userEntered.charAt(0);
                     userWord = new String(userWordArray);
                     foundLetter = true;
                     System.out.println("Correct guess");
@@ -89,35 +99,59 @@ public class Main {
             if (userWord.contains("_") == false) {
                 System.out.println("This is a correct word");
                 System.out.println("YOU WIN!!");
-
+                System.out.println("Would you like to continue? Y/N");
+                String answer = scanner.nextLine();
+                if (answer.equalsIgnoreCase("y")) {
+                    playGame();
+                } else {
+                    gameStarted = false;
+                    showMenu();
+                }
             }
             //guess by letter if mistakes are equal to 5;
             if (!foundLetter) {
+
                 System.out.println("Incorrect letter and try again");
                 mistakes++;
-                String wrong1 = hangmanTree.draw(mistakes);
-
+                hangmanTree.draw(mistakes);
 
             }
             if (mistakes == 5) {
+                // hangmanTree.draw(mistakes);
                 System.out.println("Game Over");
                 System.out.println("The correct word was: " + currentWord);
-
-            }
-            }
-            // guess by the whole word ;
-            if (userInput.length() == currentWord.length()) {
-
-                if (userInput.equals(currentWord)) {
-                    System.out.println("This is a correct word");
-                    System.out.println("YOU WIN!!");
+                System.out.println("Would you like to continue? Y/N");
+                String answer = scanner.nextLine();
+                if (answer.equalsIgnoreCase("y")) {
+                    playGame();
 
                 } else {
-                    hangmanTree.draw(5);
-                    System.out.println("GAME OVER, This is incorrect word!!!");
-                    System.out.println("The correct word was " + currentWord);
+                    gameStarted = false;
+                    showMenu();
                 }
+            }
+        }
+        // guess by the whole word ;
+        if (userEntered.length() == currentWord.length()) {
 
+            if (userEntered.equals(currentWord)) {
+                System.out.println("This is a correct word");
+                System.out.println("YOU WIN!!");
+
+            } else {
+                hangmanTree.draw(5);
+                System.out.println("GAME OVER, This is incorrect word!!!");
+                System.out.println("The correct word was " + currentWord);
+            }
+            System.out.println("Would you like to continue? Y/N");
+            String answer = scanner.nextLine();
+            if (answer.equalsIgnoreCase("y")) {
+                playGame();
+            } else {
+                gameStarted = false;
+                showMenu();
             }
         }
     }
+
+}

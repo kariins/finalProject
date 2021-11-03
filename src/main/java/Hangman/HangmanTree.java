@@ -2,7 +2,7 @@ package Hangman;
 
 public class HangmanTree {
 
-    public String draw(int currentError) {
+    public void draw(int currentError) {
 
         switch (currentError) {
             case 1:
@@ -26,7 +26,6 @@ public class HangmanTree {
 
         }
 
-        return null;
     }
 
 
